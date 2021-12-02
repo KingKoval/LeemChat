@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "888121450863",
+    "firebase_url": "https://leemchat-2f216-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "leemchat-2f216",
+    "storage_bucket": "leemchat-2f216.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888121450863:android:af450d3096f8635801889a",
+        "android_client_info": {
+          "package_name": "com.kingkoval.leemchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888121450863-7jjhdv9mkvootqvdcevpj31nhmn2bbfu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpWEQou-zX-ppfwbKJInopxty-OKfCpN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888121450863-7jjhdv9mkvootqvdcevpj31nhmn2bbfu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,4 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-app/src/main/res/drawable-v24/photo.jpeg
+app/src/main/res/drawable/test_photo.jpg

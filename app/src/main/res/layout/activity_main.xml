@@ -39,8 +39,6 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:fontFamily="@font/texpisans_bold"
-            tools:layout_editor_absoluteX="73dp"
-            tools:layout_editor_absoluteY="33dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"/>
 

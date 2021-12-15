@@ -1,20 +1,33 @@
 package com.kingkoval.leemchat
 
+import android.app.Instrumentation
 import android.content.Intent
+import android.graphics.ImageDecoder
+import android.graphics.drawable.BitmapDrawable
+import android.media.Image
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.print.PrintAttributes
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns.EMAIL_ADDRESS
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_registration.*
 import org.w3c.dom.Text
+import java.net.URI
+import java.util.*
 import java.util.regex.Pattern
 
 class RegistrationActivity : AppCompatActivity() {
@@ -26,12 +39,41 @@ class RegistrationActivity : AppCompatActivity() {
     private var checkPass: Boolean = false
     private var checkConfirmPass: Boolean = false
 
+    lateinit var userPhotoUri: Uri
+
+    val resultLauncherUploadImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result:ActivityResult ->
+        if(result.resultCode == RESULT_OK && result.data != null){
+            Log.i("IMAGE!!!", "Image was selected")
+            userPhotoUri = result.data!!.data!!
+
+
+            val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, userPhotoUri))
+            } else {
+                MediaStore.Images.Media.getBitmap(contentResolver, userPhotoUri)
+            }
+
+            iv_user_photo.background = BitmapDrawable(bitmap)
+        } else{
+
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
         auth = Firebase.auth
+
+        iv_user_photo.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+
+            resultLauncherUploadImage.launch(intent)
+        }
+
 
         tv_sign_in.setOnClickListener{
                 startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
@@ -55,18 +97,29 @@ class RegistrationActivity : AppCompatActivity() {
 
     }
 
+    fun uploadImageToFirebaseStorage(){
+        val fileName = UUID.randomUUID().toString()
+
+        val ref = FirebaseStorage.getInstance().getReference("/user_photo/$fileName")
+
+        ref.putFile(userPhotoUri).addOnSuccessListener {
+            Log.i("USER", "image upload to firebase storage")
+        }
+    }
+
     fun createUser(){
         auth.createUserWithEmailAndPassword(et_email.text.toString(), et_create_pass.text.toString()).
                 addOnCompleteListener(this){ task ->
                     if(task.isSuccessful){
+                        uploadImageToFirebaseStorage()
                         Toast.makeText(this, "Success registration", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                         finish()
                     } else{
                         Log.w("FIRERROR", "signInWithEmail:failure", task.exception)
-                        Toast.makeText(baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, "Authentication failed: ${task.exception?.message}",
+                            Toast.LENGTH_LONG).show()
                     }
                 }
 

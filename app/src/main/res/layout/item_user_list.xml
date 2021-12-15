@@ -22,9 +22,10 @@
             app:layout_constraintLeft_toLeftOf="parent">
 
             <ImageView
+                android:id="@+id/iv_user_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/test_photo"/>
+                android:src="@null"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -35,6 +36,7 @@
             android:layout_marginLeft="10dp">
 
             <TextView
+                android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bohdan Chemodan"
@@ -45,6 +47,7 @@
 
 
             <TextView
+                android:id="@+id/tv_last_sms"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -75,6 +78,7 @@
                 app:layout_constraintRight_toRightOf="parent" />
 
             <TextView
+                android:id="@+id/tv_count_unread_sms"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center_horizontal"

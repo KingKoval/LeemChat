@@ -22,6 +22,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -29,6 +31,7 @@ import org.w3c.dom.Text
 import java.net.URI
 import java.util.*
 import java.util.regex.Pattern
+import com.kingkoval.leemchat.User
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -38,6 +41,8 @@ class RegistrationActivity : AppCompatActivity() {
     private var checkEmail: Boolean = false
     private var checkPass: Boolean = false
     private var checkConfirmPass: Boolean = false
+
+    private lateinit var dbRef: DatabaseReference
 
     lateinit var userPhotoUri: Uri
 
@@ -112,6 +117,9 @@ class RegistrationActivity : AppCompatActivity() {
                 addOnCompleteListener(this){ task ->
                     if(task.isSuccessful){
                         uploadImageToFirebaseStorage()
+                        addUserToDatabase(et_name.text.toString(), et_email.text.toString(),
+                            auth.currentUser?.uid.toString()
+                        )
                         Toast.makeText(this, "Success registration", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -123,6 +131,17 @@ class RegistrationActivity : AppCompatActivity() {
                     }
                 }
 
+    }
+
+    fun addUserToDatabase(name: String, email: String, uid: String){
+        dbRef = FirebaseDatabase.getInstance().getReference()
+        dbRef.child("users").child(uid).setValue(User(name, email, uid)).addOnCompleteListener(this){ task ->
+            if(task.isSuccessful){
+                Log.i("BOHDAN","SUCCESS" + task.exception.toString())
+            } else{
+                Log.i("BOHDAN", "FAILED" + task.exception.toString())
+            }
+        }
     }
 
     fun validateEnterDate(){

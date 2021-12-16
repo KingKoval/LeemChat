@@ -22,8 +22,8 @@ class UsersAdapter(val context: Context, val users: ArrayList<User>): RecyclerVi
         val user = users[position]
 
         holder.tv_user_name.text = user.name
-        holder.tv_last_sms.text = user.lastSms
-        holder.tv_last_time_sms.text = user.timeLastSms
+        //holder.tv_last_sms.text = user.lastSms
+        //holder.tv_last_time_sms.text = user.timeLastSms
         //holder.tv_count_unread_sms.text = user.countUnreadSms
     }
 

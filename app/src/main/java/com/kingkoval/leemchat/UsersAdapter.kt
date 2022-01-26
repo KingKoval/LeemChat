@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_user_list.*
 
 class UsersAdapter(val context: Context, val users: ArrayList<User>): RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
@@ -21,6 +22,7 @@ class UsersAdapter(val context: Context, val users: ArrayList<User>): RecyclerVi
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user = users[position]
 
+        Glide.with(context).load(user.profileImage).into(holder.iv_user_photo)
         holder.tv_user_name.text = user.name
         //holder.tv_last_sms.text = user.lastSms
         //holder.tv_last_time_sms.text = user.timeLastSms

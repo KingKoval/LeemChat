@@ -45,6 +45,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var dbRef: DatabaseReference
 
     lateinit var userPhotoUri: Uri
+    var userPhotoUrl: String = "null"
 
     val resultLauncherUploadImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result:ActivityResult ->
@@ -96,20 +97,13 @@ class RegistrationActivity : AppCompatActivity() {
                 Toast.makeText(this, "Failed registration", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
+//                uploadImageToFirebaseStorage()
+//                Log.i("SUKA123", userPhotoUri1.toString())
                 createUser()
+                Log.i("DUPA1", userPhotoUrl)
             }
         }
 
-    }
-
-    fun uploadImageToFirebaseStorage(){
-        val fileName = UUID.randomUUID().toString()
-
-        val ref = FirebaseStorage.getInstance().getReference("/user_photo/$fileName")
-
-        ref.putFile(userPhotoUri).addOnSuccessListener {
-            Log.i("USER", "image upload to firebase storage")
-        }
     }
 
     fun createUser(){
@@ -117,9 +111,6 @@ class RegistrationActivity : AppCompatActivity() {
                 addOnCompleteListener(this){ task ->
                     if(task.isSuccessful){
                         uploadImageToFirebaseStorage()
-                        addUserToDatabase(et_name.text.toString(), et_email.text.toString(),
-                            auth.currentUser?.uid.toString()
-                        )
                         Toast.makeText(this, "Success registration", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -133,15 +124,45 @@ class RegistrationActivity : AppCompatActivity() {
 
     }
 
-    fun addUserToDatabase(name: String, email: String, uid: String){
-        dbRef = FirebaseDatabase.getInstance().getReference()
-        dbRef.child("users").child(uid).setValue(User(name, email, uid)).addOnCompleteListener(this){ task ->
+    fun addUserToDatabase(profileImage: String, name: String, email: String, uid: String){
+        dbRef = FirebaseDatabase.getInstance().reference
+        dbRef.child("users").child(uid).setValue(User(profileImage, name, email, uid)).addOnCompleteListener(this){ task ->
             if(task.isSuccessful){
                 Log.i("BOHDAN","SUCCESS" + task.exception.toString())
             } else{
                 Log.i("BOHDAN", "FAILED" + task.exception.toString())
             }
+        }.addOnFailureListener { it ->
+            Log.i("BOHDAN", it.toString())
         }
+
+    }
+
+    fun uploadImageToFirebaseStorage(){
+        val fileName = UUID.randomUUID().toString()
+
+        val ref = FirebaseStorage.getInstance().getReference("/user_photo/$fileName")
+
+        ref.putFile(userPhotoUri).addOnSuccessListener {
+            Log.i("USER", "image upload to firebase storage")
+
+            ref.downloadUrl.addOnSuccessListener { task ->
+                val userPhotoUrl1 = task.toString()
+
+                userPhotoUrl = userPhotoUrl1
+
+                addUserToDatabase(userPhotoUrl, et_name.text.toString(), et_email.text.toString(),
+                    auth.currentUser?.uid.toString()
+                )
+                Log.i("SUKA", userPhotoUrl)
+            }
+        }.addOnFailureListener{
+                it ->
+            Log.i("USER", it.toString())
+        }
+
+        Log.i("SUKA1", userPhotoUrl)
+
     }
 
     fun validateEnterDate(){

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeemChat">
         <activity
+            android:name=".adapter.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.RegistrationActivity"
             android:exported="true"
             android:screenOrientation="userPortrait">

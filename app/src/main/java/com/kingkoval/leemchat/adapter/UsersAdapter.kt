@@ -1,15 +1,18 @@
 package com.kingkoval.leemchat.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kingkoval.leemchat.R
 import com.kingkoval.leemchat.User
+import com.kingkoval.leemchat.activity.RegistrationActivity
 
 class UsersAdapter(val context: Context, val users: ArrayList<User>): RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
 
@@ -24,6 +27,7 @@ class UsersAdapter(val context: Context, val users: ArrayList<User>): RecyclerVi
 
         Glide.with(context).load(user.profileImage).into(holder.iv_user_photo)
         holder.tv_user_name.text = user.name
+
         //holder.tv_last_sms.text = user.lastSms
         //holder.tv_last_time_sms.text = user.timeLastSms
         //holder.tv_count_unread_sms.text = user.countUnreadSms

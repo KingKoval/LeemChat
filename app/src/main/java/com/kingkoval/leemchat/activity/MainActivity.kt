@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         recycler_view_users.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
         getUsersList()
+
     }
 
     fun getUsersList(){

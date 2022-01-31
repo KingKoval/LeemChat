@@ -40,9 +40,9 @@
                 android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bohdan Chemodan"
+                android:text="User"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/texpisans_bold"
                 android:layout_marginTop="5dp"/>
 

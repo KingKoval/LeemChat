@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeemChat">
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".activity.RegistrationActivity"
             android:exported="true"
             android:screenOrientation="userPortrait">
             <intent-filter>
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".activity.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="userPortrait">
             <intent-filter>
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true"
             android:screenOrientation="userPortrait">
             <intent-filter>
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="userPortrait">
             <intent-filter>

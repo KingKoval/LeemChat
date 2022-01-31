@@ -1,15 +1,14 @@
-package com.kingkoval.leemchat
+package com.kingkoval.leemchat.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.TextView
-import androidx.core.widget.addTextChangedListener
 import android.util.Patterns.EMAIL_ADDRESS
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.kingkoval.leemchat.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {

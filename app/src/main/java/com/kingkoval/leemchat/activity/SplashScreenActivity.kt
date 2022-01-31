@@ -1,16 +1,13 @@
-package com.kingkoval.leemchat
+package com.kingkoval.leemchat.activity
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatCallback
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.motion.widget.MotionLayout
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.kingkoval.leemchat.R
 
 class SplashScreenActivity : AppCompatActivity() {
 

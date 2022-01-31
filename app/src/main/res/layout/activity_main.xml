@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_main_scene"
-    tools:context=".MainActivity"
+    tools:context=".activity.MainActivity"
     android:background="@color/green_600"
     android:orientation="vertical">
 
@@ -26,6 +26,7 @@
             app:layout_constraintLeft_toLeftOf="parent">
 
             <ImageView
+                android:id="@+id/iv_user_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@null"/>
@@ -33,11 +34,12 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bohdan Kovalchuk"
+            android:text="Hello, user"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:fontFamily="@font/texpisans_bold"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"/>
@@ -51,6 +53,6 @@
         app:layout_constraintTop_toBottomOf="@id/linear_layout_user"
         android:background="@drawable/bg_recycler_view"
         android:paddingTop="25dp"
-        android:paddingHorizontal="15dp"/>
+        android:paddingHorizontal="10dp"/>
 
 </LinearLayout>

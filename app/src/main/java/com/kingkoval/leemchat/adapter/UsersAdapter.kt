@@ -1,7 +1,6 @@
-package com.kingkoval.leemchat
+package com.kingkoval.leemchat.adapter
 
 import android.content.Context
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_user_list.*
+import com.kingkoval.leemchat.R
+import com.kingkoval.leemchat.User
 
 class UsersAdapter(val context: Context, val users: ArrayList<User>): RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
 

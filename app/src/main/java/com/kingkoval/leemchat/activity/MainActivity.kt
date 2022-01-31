@@ -1,41 +1,38 @@
-package com.kingkoval.leemchat
+package com.kingkoval.leemchat.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.kingkoval.leemchat.R
+import com.kingkoval.leemchat.User
+import com.kingkoval.leemchat.adapter.UsersAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 
 class MainActivity : AppCompatActivity() {
 
     var usersList = ArrayList<User>()
+    lateinit var auth: FirebaseAuth
 
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        auth = Firebase.auth
+
         recycler_view_users.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-
-
-
-//        usersList.add(User("https://i.stack.imgur.com/l60Hf.png", "Ivan", "ivan@eblan.com", "12321fadas"))
-//        usersList.add(User("https://i.stack.imgur.com/l60Hf.png", "Kolua", "ivan@eblan.com", "12321fadas"))
-//        usersList.add(User("https://i.stack.imgur.com/l60Hf.png", "Petya", "ivan@eblan.com", "12321fadas"))
-//        usersList.add(User("https://i.stack.imgur.com/l60Hf.png", "Bohdan", "ivan@eblan.com", "12321fadas"))
-
-//        var adapter = UsersAdapter(this, usersList)
-
-//        recycler_view_users.adapter = adapter
 
         getUsersList()
     }
@@ -49,7 +46,12 @@ class MainActivity : AppCompatActivity() {
                     val user = dataSnapshot.getValue(User::class.java)
 
                     if (user != null) {
-                        usersList.add(user)
+                        if(user.uid == auth.uid){
+                            Glide.with(this@MainActivity).load(user.profileImage).into(iv_user_photo)
+                            tv_user_name.text = "Hello, " + user.name
+                        } else{
+                            usersList.add(user)
+                        }
                     }
                 }
 

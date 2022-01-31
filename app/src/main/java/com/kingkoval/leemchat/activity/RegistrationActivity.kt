@@ -1,37 +1,30 @@
-package com.kingkoval.leemchat
+package com.kingkoval.leemchat.activity
 
-import android.app.Instrumentation
 import android.content.Intent
 import android.graphics.ImageDecoder
 import android.graphics.drawable.BitmapDrawable
-import android.media.Image
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.print.PrintAttributes
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns.EMAIL_ADDRESS
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.widget.addTextChangedListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_registration.*
-import org.w3c.dom.Text
-import java.net.URI
-import java.util.*
-import java.util.regex.Pattern
+import com.kingkoval.leemchat.R
 import com.kingkoval.leemchat.User
+import kotlinx.android.synthetic.main.activity_registration.*
+import java.util.*
 
 class RegistrationActivity : AppCompatActivity() {
 

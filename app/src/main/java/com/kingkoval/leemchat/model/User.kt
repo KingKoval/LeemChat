@@ -1,4 +1,4 @@
-package com.kingkoval.leemchat
+package com.kingkoval.leemchat.model
 
 import android.provider.ContactsContract
 

@@ -55,7 +55,8 @@ class SplashScreenActivity : AppCompatActivity() {
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                     finish()
                 } else{
-                    startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
+//                    startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
+                    startActivity(Intent(this@SplashScreenActivity, ChatActivity::class.java))
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                     finish()
                 }

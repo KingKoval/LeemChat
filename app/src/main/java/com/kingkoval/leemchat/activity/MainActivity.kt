@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.kingkoval.leemchat.R
-import com.kingkoval.leemchat.User
+import com.kingkoval.leemchat.model.User
 import com.kingkoval.leemchat.adapter.UsersAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 

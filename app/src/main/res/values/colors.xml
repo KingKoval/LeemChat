@@ -11,6 +11,7 @@
     <color name="green_600">#4E9F3D</color>
     <color name="green_900">#1E5128</color>
     <color name="grey">#D8656565</color>
-
+    <color name="grey_light">#eeeeee</color>
+    <color name="dark_text">#323232</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/lime_200</color>
 </resources>

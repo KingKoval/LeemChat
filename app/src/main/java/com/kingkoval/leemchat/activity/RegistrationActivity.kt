@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.kingkoval.leemchat.R
-import com.kingkoval.leemchat.User
+import com.kingkoval.leemchat.model.User
 import kotlinx.android.synthetic.main.activity_registration.*
 import java.util.*
 

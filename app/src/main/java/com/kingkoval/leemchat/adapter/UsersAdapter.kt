@@ -1,18 +1,15 @@
 package com.kingkoval.leemchat.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kingkoval.leemchat.R
-import com.kingkoval.leemchat.User
-import com.kingkoval.leemchat.activity.RegistrationActivity
+import com.kingkoval.leemchat.model.User
 
 class UsersAdapter(val context: Context, val users: ArrayList<User>): RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
 

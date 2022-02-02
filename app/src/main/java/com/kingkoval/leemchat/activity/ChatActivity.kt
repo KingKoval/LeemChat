@@ -1,4 +1,4 @@
-package com.kingkoval.leemchat.adapter
+package com.kingkoval.leemchat.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

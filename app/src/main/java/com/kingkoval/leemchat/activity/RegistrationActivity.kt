@@ -34,15 +34,19 @@ class RegistrationActivity : AppCompatActivity() {
     private var checkEmail: Boolean = false
     private var checkPass: Boolean = false
     private var checkConfirmPass: Boolean = false
+    private var checkUserPhoto: Boolean = false
 
     private lateinit var dbRef: DatabaseReference
 
     lateinit var userPhotoUri: Uri
     var userPhotoUrl: String = "null"
 
+    val DEFAULT_USER_PHOTO_URL = "https://firebasestorage.googleapis.com/v0/b/leemchat-2f216.appspot.com/o/user_photo%2Fdefault-user-image.png?alt=media&token=721f7d49-3620-4a4c-afeb-428d89ec3f35"
+
     val resultLauncherUploadImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result:ActivityResult ->
         if(result.resultCode == RESULT_OK && result.data != null){
+            checkUserPhoto = true
             Log.i("IMAGE!!!", "Image was selected")
             userPhotoUri = result.data!!.data!!
 
@@ -55,7 +59,7 @@ class RegistrationActivity : AppCompatActivity() {
 
             iv_user_photo.background = BitmapDrawable(bitmap)
         } else{
-
+            checkUserPhoto = false
         }
 
     }
@@ -103,7 +107,14 @@ class RegistrationActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(et_email.text.toString(), et_create_pass.text.toString()).
                 addOnCompleteListener(this){ task ->
                     if(task.isSuccessful){
-                        uploadImageToFirebaseStorage()
+                        if(checkUserPhoto == true) {
+                            uploadImageToFirebaseStorage()
+                        } else {
+                            addUserToDatabase(
+                                DEFAULT_USER_PHOTO_URL, et_name.text.toString(), et_email.text.toString(),
+                                auth.currentUser?.uid.toString()
+                            )
+                        }
                         Toast.makeText(this, "Success registration", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -144,14 +155,20 @@ class RegistrationActivity : AppCompatActivity() {
 
                 userPhotoUrl = userPhotoUrl1
 
-                addUserToDatabase(userPhotoUrl, et_name.text.toString(), et_email.text.toString(),
+
+                addUserToDatabase(
+                    userPhotoUrl, et_name.text.toString(), et_email.text.toString(),
                     auth.currentUser?.uid.toString()
                 )
+
                 Log.i("SUKA", userPhotoUrl)
             }
         }.addOnFailureListener{
                 it ->
-            Log.i("USER", it.toString())
+            Log.i("USER123", it.toString())
+            addUserToDatabase(DEFAULT_USER_PHOTO_URL, et_name.text.toString(), et_email.text.toString(),
+                auth.currentUser?.uid.toString()
+            )
         }
 
         Log.i("SUKA1", userPhotoUrl)

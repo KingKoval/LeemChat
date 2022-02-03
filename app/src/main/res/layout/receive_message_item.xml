@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="2dp">
 
     <TextView
         android:id="@+id/tv_receive_message"
@@ -13,6 +13,7 @@
         android:background="@drawable/bg_receive_message"
         android:fontFamily="@font/texpisans_light"
         android:text="Hello my bro"
+        android:textSize="17sp"
         android:textColor="@color/dark_text"/>
 
 </RelativeLayout>

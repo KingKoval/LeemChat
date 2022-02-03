@@ -3,17 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="2dp">
 
     <TextView
         android:id="@+id/tv_send_message"
-        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_alignParentRight="true"
         android:background="@drawable/bg_send_message"
         android:fontFamily="@font/texpisans_light"
+        android:padding="10dp"
         android:text="Hello my friend"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
 </RelativeLayout>

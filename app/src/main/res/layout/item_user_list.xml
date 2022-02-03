@@ -52,7 +52,7 @@
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Hello, welcome in my app LeemChat"
+                android:text="Click for write message"
                 android:fontFamily="@font/texpisans_light"
                 android:maxLines="1"/>
 
@@ -65,31 +65,31 @@
             android:layout_gravity="center_vertical"
             android:gravity="right"
             android:paddingRight="10dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-            <TextView
-                android:id="@+id/tv_time_last_sms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/texpisans_bold"
-                android:text="10:40"
-                app:layout_constraintRight_toRightOf="parent" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_time_last_sms"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/texpisans_bold"-->
+<!--                android:text="10:40"-->
+<!--                app:layout_constraintRight_toRightOf="parent" />-->
 
-            <TextView
-                android:id="@+id/tv_count_unread_sms"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_count_sms"
-                android:fontFamily="@font/texpisans_light"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="5"
-                android:textColor="@color/white" />
-            </LinearLayout>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_count_unread_sms"-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:background="@drawable/bg_count_sms"-->
+<!--                android:fontFamily="@font/texpisans_light"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="5"-->
+<!--                android:textColor="@color/white" />-->
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 

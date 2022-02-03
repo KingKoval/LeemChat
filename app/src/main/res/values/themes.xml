@@ -57,4 +57,9 @@
         <item name="android:fontFamily">@font/poetsenone</item>
     </style>
 
+    <style name="CustomFontPopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="fontFamily">@font/texpisans_bold</item>
+    </style>
+
 </resources>

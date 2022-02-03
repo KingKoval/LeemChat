@@ -48,7 +48,7 @@ class MessageAdapter(val contex: Context, val messageList: ArrayList<Message>): 
 
         val message = messageList[position]
 
-        if(FirebaseAuth.getInstance().currentUser!!.uid != message.senderId)
+        if(FirebaseAuth.getInstance().currentUser!!.uid != message.senderUid)
             return RECEIVE
         else
             return SEND

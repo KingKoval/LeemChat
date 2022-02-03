@@ -94,10 +94,7 @@ class RegistrationActivity : AppCompatActivity() {
                 Toast.makeText(this, "Failed registration", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
-//                uploadImageToFirebaseStorage()
-//                Log.i("SUKA123", userPhotoUri1.toString())
                 createUser()
-                Log.i("DUPA1", userPhotoUrl)
             }
         }
 
@@ -161,7 +158,6 @@ class RegistrationActivity : AppCompatActivity() {
                     auth.currentUser?.uid.toString()
                 )
 
-                Log.i("SUKA", userPhotoUrl)
             }
         }.addOnFailureListener{
                 it ->
@@ -170,8 +166,6 @@ class RegistrationActivity : AppCompatActivity() {
                 auth.currentUser?.uid.toString()
             )
         }
-
-        Log.i("SUKA1", userPhotoUrl)
 
     }
 

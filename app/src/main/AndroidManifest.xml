@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeemChat">
         <activity
+            android:name=".activity.AboutUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ChatActivity"
             android:exported="false" />
         <activity

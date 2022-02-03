@@ -1,8 +1,12 @@
 package com.kingkoval.leemchat.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.widget.LinearLayout
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -36,6 +40,11 @@ class MainActivity : AppCompatActivity() {
 
         getUsersList()
 
+        popup_menu.setOnClickListener {
+            showPopupMenu()
+        }
+
+
     }
 
     fun getUsersList(){
@@ -56,16 +65,43 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                val usersAdapter = UsersAdapter(this@MainActivity, usersList)
+                val usersAdapter = UsersAdapter(this@MainActivity, this@MainActivity, usersList)
 
                 recycler_view_users.adapter = usersAdapter
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
 
         })
+    }
+
+
+
+    fun showPopupMenu(){
+        val wrapper = ContextThemeWrapper(this, R.style.CustomFontPopupMenu)
+        val popupMenu = PopupMenu(wrapper, popup_menu)
+        popupMenu.inflate(R.menu.popupmenu)
+
+        popupMenu.setOnMenuItemClickListener {it ->
+            when(it.itemId){
+                R.id.menu_item_about ->
+                    startActivity(Intent(this, AboutUsActivity::class.java))
+                R.id.menu_item_logout -> {
+                    Firebase.auth.signOut()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+
+                }
+                else ->
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+            }
+
+            true
+        }
+
+        popupMenu.show()
     }
 
 }

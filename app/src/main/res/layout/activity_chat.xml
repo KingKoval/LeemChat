@@ -44,12 +44,14 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_messages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@drawable/bg_recycler_view"
         android:paddingTop="25dp"
-        android:paddingHorizontal="10dp"/>
+        android:paddingHorizontal="10dp"
+        app:stackFromEnd="true"/>
 
     <LinearLayout
         android:id="@+id/linear_layout_et"
@@ -61,6 +63,7 @@
         android:paddingHorizontal="10dp">
 
         <EditText
+            android:id="@+id/et_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_edit_text"
@@ -68,9 +71,11 @@
             android:hint="Write message..."
             android:fontFamily="@font/texpisans_light"
             android:padding="10dp"
-            android:maxLines="4"/>
+            android:maxLines="4"
+            android:inputType="textCapSentences|textMultiLine"/>
 
         <ImageButton
+            android:id="@+id/ib_send"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginLeft="5dp"

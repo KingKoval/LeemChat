@@ -35,7 +35,8 @@
 
         <TextView
             android:id="@+id/tv_user_name"
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hello, user"
             android:textColor="@color/white"
@@ -43,6 +44,13 @@
             android:fontFamily="@font/texpisans_bold"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"/>
+
+        <ImageButton
+            android:id="@+id/popup_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_more_vert_24"
+            android:layout_gravity="center_vertical"/>
 
     </LinearLayout>
 

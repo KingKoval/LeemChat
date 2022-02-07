@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.motion.widget.MotionLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.kingkoval.leemchat.R
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -55,10 +58,17 @@ class SplashScreenActivity : AppCompatActivity() {
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                     finish()
                 } else{
-                    startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
-                    //startActivity(Intent(this@SplashScreenActivity, ChatActivity::class.java))
-                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-                    finish()
+                    if(Firebase.auth.currentUser != null){
+                        startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
+                        //startActivity(Intent(this@SplashScreenActivity, ChatActivity::class.java))
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+                        finish()
+                    } else{
+                        startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
+                        //startActivity(Intent(this@SplashScreenActivity, ChatActivity::class.java))
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+                        finish()
+                    }
                 }
             }
 

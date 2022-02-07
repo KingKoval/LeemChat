@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="2dp">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_send_message"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints">
     <TextView
         android:id="@+id/tv_send_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:background="@drawable/bg_send_message"
         android:fontFamily="@font/texpisans_light"
         android:padding="10dp"
@@ -17,4 +24,18 @@
         android:textColor="@color/white"
         android:textSize="17sp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_time_send_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="11:23"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:layout_gravity="bottom"
+        android:textSize="12sp"
+        android:fontFamily="@font/texpisans_light"
+        android:alpha="0.5"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

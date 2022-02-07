@@ -77,8 +77,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-
-
     fun showPopupMenu(){
         val wrapper = ContextThemeWrapper(this, R.style.CustomFontPopupMenu)
         val popupMenu = PopupMenu(wrapper, popup_menu)

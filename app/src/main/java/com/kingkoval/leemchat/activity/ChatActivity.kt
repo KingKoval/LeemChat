@@ -98,7 +98,7 @@ class ChatActivity : AppCompatActivity() {
                     messageAdapter.notifyDataSetChanged()
                     recycler_view_messages.scrollToPosition(messageAdapter.itemCount-1)
 
-                }git
+                }
                 override fun onCancelled(error: DatabaseError) {
 
                 }

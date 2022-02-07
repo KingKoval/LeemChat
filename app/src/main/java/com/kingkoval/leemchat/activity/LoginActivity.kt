@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns.EMAIL_ADDRESS
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth

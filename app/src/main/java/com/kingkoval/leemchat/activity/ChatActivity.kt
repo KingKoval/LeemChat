@@ -1,13 +1,9 @@
 package com.kingkoval.leemchat.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -17,6 +13,9 @@ import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.activity_chat.iv_user_photo
 import kotlinx.android.synthetic.main.activity_chat.tv_user_name
 import com.kingkoval.leemchat.model.Message
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ChatActivity : AppCompatActivity() {
 
@@ -69,13 +68,16 @@ class ChatActivity : AppCompatActivity() {
 
     fun addMessageToDatabase(){
         val message = et_message.text.toString()
-        val messageObject = Message(message, senderUid!!)
+        val messageObject = Message(message, senderUid!!, ServerValue.TIMESTAMP)
 
-        dbRef.child(senderRoom!!).child("messages").push()
-            .setValue(messageObject).addOnSuccessListener {
+
+        if(!message.isEmpty()) {
+            dbRef.child(senderRoom!!).child("messages").push()
+                .setValue(messageObject).addOnSuccessListener {
                     dbRef.child(receiverRoom!!).child("messages").push()
                         .setValue(messageObject)
                 }
+        }
     }
 
     fun getMessageFromDatabase(){
@@ -96,8 +98,7 @@ class ChatActivity : AppCompatActivity() {
                     messageAdapter.notifyDataSetChanged()
                     recycler_view_messages.scrollToPosition(messageAdapter.itemCount-1)
 
-                }
-
+                }git
                 override fun onCancelled(error: DatabaseError) {
 
                 }

@@ -68,21 +68,6 @@ class MessageAdapter(val contex: Context, val messageList: ArrayList<Message>): 
         return messageList.size
     }
 
-    //convert time by time zone
-//    fun convertTime(time: Long): String{
-//        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ")
-//        var dateString = format.format(Date(time))
-//
-//        format.timeZone = TimeZone.getTimeZone("GMT")
-//
-//        val value = format.parse(dateString)
-//
-//        val newFormat = SimpleDateFormat("HH:mm")
-//        newFormat.timeZone = TimeZone.getDefault()
-//        dateString = newFormat.parse(value.toString()).toString()
-//
-//        return dateString
-//    }
 
     @SuppressLint("NewApi")
     fun convertTime(time: Long): String{

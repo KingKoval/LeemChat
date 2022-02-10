@@ -5,37 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="2dp">
+    android:paddingVertical="2dp"
+    android:paddingRight="2dp"
+    android:paddingLeft="50dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_send_message"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="MissingConstraints">
-    <TextView
-        android:id="@+id/tv_send_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_send_message"
-        android:fontFamily="@font/texpisans_light"
-        android:padding="10dp"
-        android:text="Hello my friend"
-        android:textColor="@color/white"
-        android:textSize="17sp" />
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:id="@+id/layout"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       android:background="@drawable/bg_send_message">
 
-    <TextView
-        android:id="@+id/tv_time_send_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="11:23"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        android:layout_gravity="bottom"
-        android:textSize="12sp"
-        android:fontFamily="@font/texpisans_light"
-        android:alpha="0.5"/>
-    </LinearLayout>
+      <TextView
+          android:id="@+id/tv_send_message"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintTop_toTopOf="@id/layout"
+          android:text="sfa\n\n\nfaijjjjjjjjjjjkkkmmmmjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjoiojoijsf"
+          android:textSize="17sp"
+          android:fontFamily="@font/texpisans_light"
+          android:paddingTop="10dp"
+          android:paddingHorizontal="10dp"
+          android:textColor="@color/white"
+          tools:ignore="MissingConstraints" />
+
+      <TextView
+          android:id="@+id/tv_time_send_message"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintRight_toRightOf="@id/layout"
+          app:layout_constraintTop_toBottomOf="@id/tv_send_message"
+          android:text="10:20"
+          android:textColor="@color/white"
+          android:textSize="12sp"
+          android:fontFamily="@font/texpisans_light"
+          android:paddingHorizontal="10dp"
+          android:paddingBottom="5dp"
+          android:alpha="0.5"/>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

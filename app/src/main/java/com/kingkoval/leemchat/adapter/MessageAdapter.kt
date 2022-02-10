@@ -75,7 +75,26 @@ class MessageAdapter(val contex: Context, val messageList: ArrayList<Message>): 
         val zone = ZoneId.of(ZonedDateTime.now().zone.id)
         Log.i("ZONE123", zone.toString())
 
-        return ZonedDateTime.ofInstant(i, zone).format(DateTimeFormatter.ofPattern("HH:mm"))
+        val date = ZonedDateTime.ofInstant(i, zone)
+
+        val now = ZonedDateTime.now().toInstant().toEpochMilli()
+
+
+//        Log.i("1day", Instant.)
+        Log.i("difference!", "now = $now")
+        Log.i("difference!", "i = ${i.toEpochMilli()}")
+        Log.i("difference!", "dif = " +(now - i.toEpochMilli()).toString())
+
+        if((now - date.toInstant().toEpochMilli()) < 86400000){
+            Log.i("difference!", "now = $now")
+            Log.i("difference!", "i = ${date.toInstant().toEpochMilli()}")
+            Log.i("difference!", "dif = " +(now - date.toInstant().toEpochMilli()).toString())
+            return date.format(DateTimeFormatter.ofPattern("HH:mm"))
+        } else {
+            return date.format(DateTimeFormatter.ofPattern("d LLL HH:mm"))
+        }
+
+
     }
 
     class SendMessageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){

@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             showPopupMenu()
         }
 
-
     }
 
     fun getUsersList(){
@@ -66,6 +65,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 val usersAdapter = UsersAdapter(this@MainActivity, this@MainActivity, usersList)
+
+                usersAdapter.notifyDataSetChanged()
 
                 recycler_view_users.adapter = usersAdapter
             }

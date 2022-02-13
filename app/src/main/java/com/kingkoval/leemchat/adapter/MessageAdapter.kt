@@ -44,12 +44,12 @@ class MessageAdapter(val contex: Context, val messageList: ArrayList<Message>): 
             val viewHolder = holder as SendMessageViewHolder
 
             holder.tv_send_message.text = message.message
-            holder.tv_time_send_message.text = convertTime(message.timeMessage!! as Long)
+            holder.tv_time_send_message.text = message.formatForChat(message.convertTime(message.timeMessage as Long))
         } else{
             val viewHolder = holder as ReceiveMessageViewHolder
 
             holder.tv_receive_message.text = message.message
-            holder.tv_time_receive_message.text = convertTime(message.timeMessage!! as Long)
+            holder.tv_time_receive_message.text = message.formatForChat(message.convertTime(message.timeMessage as Long))
         }
 
     }
@@ -66,35 +66,6 @@ class MessageAdapter(val contex: Context, val messageList: ArrayList<Message>): 
 
     override fun getItemCount(): Int {
         return messageList.size
-    }
-
-
-    @SuppressLint("NewApi")
-    fun convertTime(time: Long): String{
-        val i = Instant.ofEpochMilli(time)
-        val zone = ZoneId.of(ZonedDateTime.now().zone.id)
-        Log.i("ZONE123", zone.toString())
-
-        val date = ZonedDateTime.ofInstant(i, zone)
-
-        val now = ZonedDateTime.now().toInstant().toEpochMilli()
-
-
-//        Log.i("1day", Instant.)
-        Log.i("difference!", "now = $now")
-        Log.i("difference!", "i = ${i.toEpochMilli()}")
-        Log.i("difference!", "dif = " +(now - i.toEpochMilli()).toString())
-
-        if((now - date.toInstant().toEpochMilli()) < 86400000){
-            Log.i("difference!", "now = $now")
-            Log.i("difference!", "i = ${date.toInstant().toEpochMilli()}")
-            Log.i("difference!", "dif = " +(now - date.toInstant().toEpochMilli()).toString())
-            return date.format(DateTimeFormatter.ofPattern("HH:mm"))
-        } else {
-            return date.format(DateTimeFormatter.ofPattern("d LLL HH:mm"))
-        }
-
-
     }
 
     class SendMessageViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){

@@ -1,5 +1,6 @@
 package com.kingkoval.leemchat.activity
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.graphics.ImageDecoder
 import android.graphics.drawable.BitmapDrawable
@@ -11,7 +12,9 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.util.Pair
 import android.util.Patterns.EMAIL_ADDRESS
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -41,7 +44,7 @@ class RegistrationActivity : AppCompatActivity() {
     lateinit var userPhotoUri: Uri
     var userPhotoUrl: String = "null"
 
-    val DEFAULT_USER_PHOTO_URL = "https://firebasestorage.googleapis.com/v0/b/leemchat-2f216.appspot.com/o/user_photo%2Fdefault-user-image.png?alt=media&token=721f7d49-3620-4a4c-afeb-428d89ec3f35"
+    val DEFAULT_USER_PHOTO_URL = "https://firebasestorage.googleapis.com/v0/b/leemchat-2f216.appspot.com/o/user_photo%2Fdefault-user-image.png?alt=media&token=f8ae53fc-7108-4246-bcbd-dc7d95a07718"
 
     val resultLauncherUploadImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result:ActivityResult ->
@@ -79,8 +82,16 @@ class RegistrationActivity : AppCompatActivity() {
 
 
         tv_sign_in.setOnClickListener{
-                startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+                val options = ActivityOptions.makeSceneTransitionAnimation(
+                    this,
+                    Pair<View, String>(tv_sign_in, "sign_in")
+                )
+
+                startActivity(Intent(
+                    this@RegistrationActivity, LoginActivity::class.java),
+                    options.toBundle()
+                )
+//                overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
 
         validateEnterDate()
@@ -91,12 +102,14 @@ class RegistrationActivity : AppCompatActivity() {
                 || !checkPass
                 || !checkConfirmPass
             ) {
-                Toast.makeText(this, "Failed registration", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.sign_up_fail), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 createUser()
             }
         }
+
+
 
     }
 
@@ -112,13 +125,13 @@ class RegistrationActivity : AppCompatActivity() {
                                 auth.currentUser?.uid.toString()
                             )
                         }
-                        Toast.makeText(this, "Success registration", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.sign_up_done), Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                         finish()
                     } else{
                         Log.w("FIRERROR", "signInWithEmail:failure", task.exception)
-                        Toast.makeText(baseContext, "Authentication failed: ${task.exception?.message}",
+                        Toast.makeText(baseContext, getString(R.string.auth_fail) + ": " + {task.exception?.message},
                             Toast.LENGTH_LONG).show()
                     }
                 }
@@ -180,13 +193,13 @@ class RegistrationActivity : AppCompatActivity() {
                 Log.i("XXX", "name: " + valName)
                 Log.i("XXX","name length: " + valName.length)
                 if(valName.length == 0){
-                    input_layout_name.error = "Name cannot be empty"
+                    input_layout_name.error = getString(R.string.name_empty)
                     checkName = false
                 } else if(valName.length < 2){
-                    input_layout_name.error = "Name is small"
+                    input_layout_name.error = getString(R.string.name_small)
                     checkName = false
                 } else if(valName.length > 25){
-                    input_layout_name.error = "Name is too long"
+                    input_layout_name.error = getString(R.string.name_long)
                     checkName = false
                 } else{
                     checkName = true
@@ -195,7 +208,18 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
 
-            override fun afterTextChanged(s: Editable?) { }
+            override fun afterTextChanged(s: Editable?) {
+                et_name.setOnFocusChangeListener { view, b ->
+                    if(!b){
+                        if(!checkName){
+                            input_layout_name.isErrorEnabled = false
+                            input_layout_name.startIconDrawable = resources.getDrawable(R.drawable.ic_baseline_account_circle_24_red)
+                        }
+                    } else{
+                        input_layout_name.startIconDrawable = resources.getDrawable(R.drawable.ic_baseline_account_circle_24)
+                    }
+                }
+            }
         })
 
         et_email.addTextChangedListener(object: TextWatcher{
@@ -206,10 +230,10 @@ class RegistrationActivity : AppCompatActivity() {
                 Log.i("XXX", "email: " + valEmail)
 
                 if(valEmail.length == 0){
-                    input_layout_email.error = "Email cannot be empty"
+                    input_layout_email.error = getString(R.string.email_empty)
                     checkEmail = false
                 } else if(!EMAIL_ADDRESS.matcher(valEmail).matches()){
-                    input_layout_email.error = "Invalid email"
+                    input_layout_email.error = getString(R.string.email_invalid)
                     checkEmail = false
                 } else{
                     checkEmail = true
@@ -218,7 +242,18 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
 
-            override fun afterTextChanged(p0: Editable?) { }
+            override fun afterTextChanged(p0: Editable?) {
+                et_email.setOnFocusChangeListener { view, b ->
+                    if(!b){
+                        if(!checkEmail){
+                            input_layout_email.isErrorEnabled = false
+                            input_layout_email.startIconDrawable = resources.getDrawable(R.drawable.ic_baseline_email_24_red)
+                        }
+                    } else{
+                        input_layout_email.startIconDrawable = resources.getDrawable(R.drawable.ic_baseline_email_24)
+                    }
+                }
+            }
         })
 
         et_create_pass.addTextChangedListener(object: TextWatcher{
@@ -228,20 +263,22 @@ class RegistrationActivity : AppCompatActivity() {
                 val valPass = et_create_pass.text.toString()
                 Log.i("XXX", "pass: " + valPass)
 
+
+
                 if(valPass.length < 8){
-                    input_layout_create_pass.error = "Password must containt a minimum of 8 characters in length"
+                    input_layout_create_pass.error = getString(R.string.pass_lenght_check)
                     checkPass = false
                 } else if(!valPass.matches("(.*[0-9].*)".toRegex())){
-                    input_layout_create_pass.error = "Password must contain a minimum of 1 numeric character"
+                    input_layout_create_pass.error = getString(R.string.pass_num_check)
                     checkPass = false
                 } else if(!valPass.matches("(.*[A-Z].*)".toRegex())){
-                    input_layout_create_pass.error = "Password must contain a minimum of 1 upper case letter"
+                    input_layout_create_pass.error = getString(R.string.pass_upper_check)
                     checkPass = false
                 } else if(!valPass.matches("(.*[a-z].*)".toRegex())){
-                    input_layout_create_pass.error = "Password must contain a minimum of 1 lower case letter"
+                    input_layout_create_pass.error = getString(R.string.pass_lower_check)
                     checkPass = false
                 } else if(valPass.matches("(.*\\s.*)".toRegex())){
-                    input_layout_create_pass.error = "Password cannot contain whitespace"
+                    input_layout_create_pass.error = getString(R.string.pass_wspace_check)
                     checkPass = false
                 } else {
                     checkPass = true
@@ -250,7 +287,18 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
 
-            override fun afterTextChanged(p0: Editable?) { }
+            override fun afterTextChanged(p0: Editable?) {
+                et_create_pass.setOnFocusChangeListener { view, b ->
+                    if(!b){
+                        if(!checkPass){
+                            input_layout_create_pass.isErrorEnabled = false
+                            input_layout_create_pass.startIconDrawable = resources.getDrawable(R.drawable.ic_baseline_lock_24_red)
+                        }
+                    } else{
+                        input_layout_create_pass.startIconDrawable = resources.getDrawable(R.drawable.ic_baseline_lock_24)
+                    }
+                }
+            }
         })
 
         et_confirm_pass.addTextChangedListener(object: TextWatcher{
@@ -260,7 +308,7 @@ class RegistrationActivity : AppCompatActivity() {
                 val valConfirmPass: String = et_confirm_pass.text.toString()
 
                 if(!valConfirmPass.equals(et_create_pass.text.toString())){
-                    input_layout_confirm_pass.error = "Password mismatch"
+                    input_layout_confirm_pass.error = getString(R.string.pass_conf_check)
                     checkConfirmPass = false
                 } else {
                     checkConfirmPass = true
@@ -269,15 +317,26 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
 
-            override fun afterTextChanged(p0: Editable?) { }
+            override fun afterTextChanged(p0: Editable?) {
+                et_confirm_pass.setOnFocusChangeListener { view, b ->
+                    if(!b){
+                        if(!checkConfirmPass){
+                            input_layout_confirm_pass.isErrorEnabled = false
+                            input_layout_confirm_pass.startIconDrawable = resources.getDrawable(R.drawable.ic_baseline_lock_24_red)
+                        }
+                    } else{
+                        input_layout_confirm_pass.startIconDrawable = resources.getDrawable(R.drawable.ic_baseline_lock_24)
+                    }
+                }
+            }
 
         })
 
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-    }
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+//    }
 
 }

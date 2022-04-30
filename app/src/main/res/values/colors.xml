@@ -14,4 +14,7 @@
     <color name="grey_light">#eeeeee</color>
     <color name="dark_text">#323232</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/lime_200</color>
+
+    <color name="red">#F44336</color>
+<!--    <color name="light_grey">DFDFDE</color>-->
 </resources>

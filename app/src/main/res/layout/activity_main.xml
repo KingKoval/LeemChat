@@ -21,7 +21,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:cardCornerRadius="60dp"
+            app:cardCornerRadius="25dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent">
 
@@ -41,7 +41,7 @@
             android:text="Hello, user"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:fontFamily="@font/texpisans_bold"
+            android:fontFamily="@font/nunito_extrabold"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"/>
 
@@ -54,13 +54,80 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_users"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout_user"
-        android:background="@drawable/bg_recycler_view"
-        android:paddingTop="25dp"
-        android:paddingHorizontal="10dp"/>
+
+
+    <RelativeLayout
+        android:id="@+id/fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_recycler_view">
+
+        <LinearLayout
+            android:id="@+id/linear_layout_warning"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:alpha="0.5">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_warning"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/friends_list_empty"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="true"
+            android:paddingHorizontal="10dp"
+            android:paddingTop="10dp" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:padding="10dp"
+            android:backgroundTint="@color/green_600"
+            android:outlineSpotShadowColor="@color/white"
+            android:src="@drawable/ic_baseline_person_search_24"
+            app:backgroundTint="@color/white"
+            app:rippleColor="@color/green_900"
+            app:tint="@color/white" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_search_friends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/green_600"
+                android:outlineSpotShadowColor="@color/white"
+                android:src="@drawable/ic_baseline_person_search_24"
+                app:backgroundTint="@color/white"
+                app:rippleColor="@color/green_900"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
 
 </LinearLayout>

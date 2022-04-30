@@ -6,11 +6,12 @@
 <item name="colorPrimaryVariant">@color/green_900</item>
 <item name="colorOnPrimary">@color/green_600</item>
 <!-- Secondary brand color. -->
-<item name="colorSecondary">@color/teal_200</item>
+<item name="colorSecondary">@color/green_600</item>
 <item name="colorSecondaryVariant">@color/teal_700</item>
 <item name="colorOnSecondary">@color/black</item>
 <!-- Status bar color. -->
 <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    <item name="popupMenuBackground">@style/CustomFontPopupMenu</item>
 <!-- Customize your theme here. -->
 </style>
 
@@ -35,7 +36,7 @@
     </style>
 
     <style name="TextInputEditText.OutlinedBox.CustomFont" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
-        <item name="android:fontFamily">@font/texpisans_light</item>
+        <item name="android:fontFamily">@font/mazzardsoft_light</item>
         <item name="android:strokeColor">@color/lime_200</item>
     </style>
     
@@ -46,20 +47,31 @@
     </style>
     
     <style name="TextInputLayoutHintText" parent="TextAppearance.Design.Hint">
-        <item name="android:fontFamily">@font/texpisans_light</item>
+        <item name="android:fontFamily">@font/mazzardsoft_light</item>
     </style>
     
     <style name="TextInputLayoutHelperText" parent="TextAppearance.Design.HelperText">
-        <item name="android:fontFamily">@font/poetsenone</item>
+        <item name="android:fontFamily">@font/mazzardsoft_light</item>
     </style>
 
     <style name="TextInputLayoutErrorText" parent="TextAppearance.Design.Error">
-        <item name="android:fontFamily">@font/poetsenone</item>
+        <item name="android:fontFamily">@font/mazzardsoft_light</item>
     </style>
 
-    <style name="CustomFontPopupMenu" parent="Widget.AppCompat.PopupMenu">
+    <!--    PopupMenu style-->
+    <style name="CustomFontPopupMenu" parent="Widget.MaterialComponents.PopupMenu">
         <item name="android:layout_width">wrap_content</item>
-        <item name="fontFamily">@font/texpisans_bold</item>
+        <item name="android:listPopupWindowStyle">@drawable/bg_send_btn</item>
+        <item name="fontFamily">@font/mazzardsoft_light</item>
     </style>
+
+
+    <!--    Search View style-->
+    <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:background">@drawable/bg_search_view</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+        <item name="iconifiedByDefault">false</item>
+    </style>
+
 
 </resources>

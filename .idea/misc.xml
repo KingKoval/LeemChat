@@ -4,29 +4,58 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_add_button.xml" value="0.1395" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_circle_user_image.xml" value="0.2450657894736842" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_count_sms.xml" value="0.2450657894736842" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_edit_text.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_menu.xml" value="0.1355" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_menu_receiver.xml" value="0.1395" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_menu_receiver_down.xml" value="0.1395" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_menu_sender.xml" value="0.1395" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_menu_sender_down.xml" value="0.1395" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_receive_message.xml" value="0.222" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_recycler_view.xml" value="0.2450657894736842" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_search_view.xml" value="0.225" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_send_btn.xml" value="0.1345" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_send_message.xml" value="0.222" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_sign_in_btn.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/bg_toast.xml" value="0.1405" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic__85_trash_bin_outline.xml" value="0.225" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.225" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_account_circle_24_red.xml" value="0.1355" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.2450657894736842" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.225" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_email_24_red.xml" value="0.1355" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.225" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_lock_24_red.xml" value="0.1355" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.222" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_person_search_24.xml" value="0.225" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.112" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_copy.xml" value="0.2305" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_edit.xml" value="0.1395" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_error.xml" value="0.1355" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_info.xml" value="0.225" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_leemchat_logo.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_logout.xml" value="0.225" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_search.xml" value="0.225" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_settings.xml" value="0.225" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/drawable/ic_warning.xml" value="0.1395" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/activity_about_us.xml" value="0.2348684210526316" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/activity_chat.xml" value="0.2348684210526316" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/activity_registration.xml" value="0.33" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/item_user_list.xml" value="0.2348684210526316" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/fragment_search_friends.xml" value="0.2348684210526316" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/item_friend_list.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/item_user_list.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/popup_menu.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/popup_menu_message.xml" value="0.2348684210526316" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/receive_message_item.xml" value="0.2348684210526316" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/send_message_item.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/layout/test.xml" value="0.2348684210526316" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/menu/message_menu.xml" value="0.2348684210526316" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/LeemChat/app/src/main/res/menu/popupmenu.xml" value="0.2348684210526316" />
       </map>
     </option>

@@ -31,10 +31,12 @@ import kotlin.collections.ArrayList
 class ChatActivity : AppCompatActivity() {
 
     var  messageList = ArrayList<Message>()
+    var  messageListReceiver = ArrayList<Message>()
 
     var senderRoom: String? = null
     var receiverRoom: String? = null
     var senderUid: String? = null
+    var receiverUid: String? = null
 
     lateinit var dbRef: DatabaseReference
     lateinit var  messageAdapter: MessageAdapter
@@ -72,37 +74,46 @@ class ChatActivity : AppCompatActivity() {
 
         dbRef = FirebaseDatabase.getInstance().getReference("chats")
 
-        messageAdapter = MessageAdapter(this, messageList)
-        recycler_view_messages.layoutManager = LinearLayoutManager(this)
-        recycler_view_messages.adapter = messageAdapter
-
-        val profileImage = intent.getStringExtra("profileImage")
-        val name = intent.getStringExtra("name")
-        val receiverUid = intent.getStringExtra("uid")
-
-        Glide.with(this).load(profileImage).into(iv_user_photo)
-        tv_user_name.text = name
-
-
         senderUid = FirebaseAuth.getInstance().currentUser!!.uid
 
         senderRoom = senderUid + receiverUid
         receiverRoom = receiverUid + senderUid
 
+        messageAdapter = MessageAdapter(
+            this,
+            messageList,
+            messageListReceiver,
+            senderRoom!!,
+            receiverRoom!!
+        )
+
+        recycler_view_messages.layoutManager = LinearLayoutManager(this)
+        recycler_view_messages.adapter = messageAdapter
+
+
+        val profileImage = intent.getStringExtra("profileImage")
+        val name = intent.getStringExtra("name")
+
+        receiverUid = intent.getStringExtra("uid")
+
+        Glide.with(this).load(profileImage).into(iv_user_photo)
+        tv_user_name.text = name
 
         getMessageFromDatabase()
-        recycler_view_messages.scrollToPosition(messageAdapter.itemCount-1)
+
+        val lm: LinearLayoutManager = recycler_view_messages.layoutManager as LinearLayoutManager
+        lm.stackFromEnd = true
 
         et_message.setOnClickListener {
             recycler_view_messages.scrollToPosition(messageAdapter.itemCount-1)
         }
 
-        ib_image.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "image/*"
-
-            resultLauncherUploadImage.launch(intent)
-        }
+//        ib_image.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_GET_CONTENT)
+//            intent.type = "image/*"
+//
+//            resultLauncherUploadImage.launch(intent)
+//        }
 
         ib_send.setOnClickListener {
             addMessageToDatabase()
@@ -113,10 +124,41 @@ class ChatActivity : AppCompatActivity() {
 
     fun addMessageToDatabase(){
         val message = et_message.text.toString()
-        val messageObject = Message(message, senderUid!!, ServerValue.TIMESTAMP)
+        val timeStamp: Map<String, String> = ServerValue.TIMESTAMP
 
+        val messageObject = Message(message, senderUid!!, timeStamp)
 
-        if(!message.isEmpty()) {
+//        val chatRoom = receiverUid + FirebaseAuth.getInstance().currentUser!!.uid
+//        val query: Query = FirebaseDatabase.getInstance().getReference("chats")
+//            .child(chatRoom).child("messages").orderByKey().limitToLast(1)
+//
+//        query.addValueEventListener(object: ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                for(dataSnapshot: DataSnapshot in snapshot.children){
+//                    val message = dataSnapshot.getValue(Message::class.java)
+//
+////                    dbRef.child(receiverUid.toString()).
+////                    dbRef.child(senderUid.toString()).child("last_time_sms").setValue(timeStamp)
+////
+
+        FirebaseDatabase.getInstance().getReference("users")
+            .child(receiverUid.toString()).child("last_time_sms").setValue(timeStamp)
+
+        FirebaseDatabase.getInstance().getReference("users")
+            .child(senderUid.toString()).child("last_time_sms").setValue(timeStamp)
+////
+////                    dbRef.child(receiverUid.toString()).up
+//
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                TODO("Not yet implemented")
+//            }
+//
+//        })
+
+        if(!message.trim().isEmpty()) {
             dbRef.child(senderRoom!!).child("messages").push()
                 .setValue(messageObject).addOnSuccessListener {
                     dbRef.child(receiverRoom!!).child("messages").push()
@@ -134,21 +176,52 @@ class ChatActivity : AppCompatActivity() {
                     messageList.clear()
 
                     for(dataSnapshot: DataSnapshot in snapshot.children){
-                        val message = dataSnapshot.getValue(Message::class.java)
+                        val messageData = dataSnapshot.getValue(Message::class.java)
 
-                        if(message != null){
-                            messageList.add(message)
+                        if(messageData != null){
+                            messageList.add(
+                                Message(
+                                    message = messageData.message,
+                                    senderUid = messageData.senderUid,
+                                    timeMessage = messageData.timeMessage,
+                                    messageKey = dataSnapshot.key.toString()
+                                )
+                            )
+
+                            Log.i("smsky", dataSnapshot.key.toString())
                         }
                     }
 
                     messageAdapter.notifyDataSetChanged()
+
                     recycler_view_messages.scrollToPosition(messageAdapter.itemCount-1)
 
                 }
-                override fun onCancelled(error: DatabaseError) {
+                override fun onCancelled(error: DatabaseError) { }
+            })
 
+        dbRef.child(receiverRoom!!).child("messages")
+            .addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(dataSnapshot: DataSnapshot in snapshot.children){
+                        val messageData = dataSnapshot.getValue(Message::class.java)
+
+                        if(messageData != null){
+                            messageListReceiver.add(
+                                Message(
+                                    message = messageData.message,
+                                    senderUid = messageData.senderUid,
+                                    timeMessage = messageData.timeMessage,
+                                    messageKey = dataSnapshot.key.toString()
+                                )
+                            )
+                        }
+                    }
+
+                    messageAdapter.notifyDataSetChanged()
                 }
 
+                override fun onCancelled(error: DatabaseError) { }
             })
     }
 }

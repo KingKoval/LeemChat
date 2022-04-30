@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".activity.ChatActivity"
     android:orientation="vertical"
-    android:background="@color/green_600">
+    android:background="@color/green_600"
+    android:id="@+id/linear_layout_main">
 
     <LinearLayout
         android:id="@+id/linear_layout_user"
@@ -16,6 +17,7 @@
         android:padding="10dp">
 
         <androidx.cardview.widget.CardView
+            android:transitionName="user_photo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:cardCornerRadius="60dp"
@@ -24,6 +26,7 @@
 
             <ImageView
                 android:id="@+id/iv_user_photo"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@null"/>
@@ -37,7 +40,7 @@
             android:text="Hello, user"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:fontFamily="@font/texpisans_bold"
+            android:fontFamily="@font/nunito_bold"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"/>
 
@@ -46,12 +49,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_messages"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="743dp"
         android:layout_weight="1"
         android:background="@drawable/bg_recycler_view"
-        android:paddingTop="25dp"
         android:paddingHorizontal="10dp"
-        app:stackFromEnd="true"/>
+        android:paddingTop="5dp"
+        android:paddingBottom="1dp"
+        app:stackFromEnd="true" />
 
     <LinearLayout
         android:id="@+id/linear_layout_et"
@@ -59,8 +63,11 @@
         android:layout_height="wrap_content"
         android:background="@color/lime_200"
         android:orientation="horizontal"
-        android:paddingVertical="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
         android:paddingHorizontal="10dp">
+
+
 
         <EditText
             android:id="@+id/et_message"
@@ -68,20 +75,22 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_edit_text"
             android:layout_weight="1"
-            android:hint="Write message..."
-            android:fontFamily="@font/texpisans_light"
-            android:padding="10dp"
+            android:hint="@string/message"
+            android:drawableRight="@drawable/ic_baseline_add_circle_24"
+            android:fontFamily="@font/nunito_light"
+            android:padding="7dp"
             android:maxLines="4"
             android:inputType="textCapSentences|textMultiLine"/>
 
+
         <ImageButton
             android:id="@+id/ib_send"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/bg_send_btn"
-            android:padding="5dp"
+            android:padding="7dp"
             android:src="@drawable/ic_baseline_send_24"/>
 
 

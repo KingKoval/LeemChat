@@ -6,6 +6,7 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 val dayOfMillisecond = 86400000
 val weekOfMillisecond = 604800000
@@ -16,6 +17,20 @@ data class Message(
     var senderUid: String = "",
     var timeMessage: Any? = null
 ) {
+//    lateinit var messageKey: String
+
+    constructor(
+        message: String,
+        senderUid: String,
+        timeMessage: Any?,
+        messageKey: String
+    ) : this(
+            message,
+            senderUid,
+            timeMessage
+        ) {
+//        this.messageKey = messageKey
+    }
 
     fun convertTime(time: Long): ZonedDateTime {
         val i = Instant.ofEpochMilli(time)
@@ -29,22 +44,22 @@ data class Message(
     fun formatForChat(date: ZonedDateTime): String{
         val now = ZonedDateTime.now().toInstant().toEpochMilli()
 
-        if (now - date.toInstant().toEpochMilli() < dayOfMillisecond)
-            return date.format(DateTimeFormatter.ofPattern("HH:mm"))
+        return if (now - date.toInstant().toEpochMilli() < dayOfMillisecond)
+            date.format(DateTimeFormatter.ofPattern("HH:mm"))
         else
-            return date.format(DateTimeFormatter.ofPattern("d LLL HH:mm"))
+            date.format(DateTimeFormatter.ofPattern("d LLL HH:mm"))
 
     }
 
     fun formatForUsersList(date: ZonedDateTime): String{
         val now = ZonedDateTime.now().toInstant().toEpochMilli()
 
-        if (now - date.toInstant().toEpochMilli() < dayOfMillisecond)
-            return date.format(DateTimeFormatter.ofPattern("HH:mm"))
+        return if (now - date.toInstant().toEpochMilli() < dayOfMillisecond)
+            date.format(DateTimeFormatter.ofPattern("HH:mm"))
         else if (now - date.toInstant().toEpochMilli() < weekOfMillisecond)
-            return date.format(DateTimeFormatter.ofPattern("d"))
+            date.format(DateTimeFormatter.ofPattern("EEE"))
         else
-            return date.format(DateTimeFormatter.ofPattern("d LLL"))
+            date.format(DateTimeFormatter.ofPattern("d LLL"))
 
     }
 

@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">LeemChat</string>
+
+    <string name="login_failed">"Login failed"</string>
+    <string name="sign_in">Вхід</string>
+    <string name="email">Електронна пошта</string>
+    <string name="password">Пароль</string>
+    <string name="dont_have_acc">Ще не маєш аккаунт?</string>
+    <string name="sign_up">Реєстрація</string>
+    <string name="email_empty">Електронна пошта не може бути пустою</string>
+    <string name="email_invalid">Неправильна електронна пошта!</string>
+    <string name="sign_in_fail">Помилка входу!</string>
+    <string name="sign_in_done">Успішний вхід</string>
+    <string name="sign_in_pass_error">Пароль мусить містити в собі не менше 8 символів</string>
+
+    <string name="user_name">Ім\'я користувача</string>
+    <string name="create_pass">Пароль</string>
+    <string name="confirm_pass">Ще раз пароль</string>
+    <string name="have_acc">Вже маєш аккаунт?</string>
+
+    <string name="sign_up_fail">Помилка реєстрації</string>
+    <string name="sign_up_done">Успішна реєстрація</string>
+    <string name="auth_fail">Помилка автентифікації</string>
+
+    <string name="name_empty">Ім\'я не може бути пустим</string>
+    <string name="name_small">Ім\'я занадто коротке</string>
+    <string name="name_long">Ім\'я занадто довге</string>
+
+    <string name="pass_lenght_check">Пароль має містити мінімум 8 символів</string>
+    <string name="pass_num_check">Пароль має містити мінімум 1 цифру</string>
+    <string name="pass_upper_check">Пароль має містити мінімум 1 велику літеру</string>
+    <string name="pass_lower_check">Пароль має містити мінімум 1 малу літеру</string>
+    <string name="pass_wspace_check">Пароль не може містити пробіли</string>
+    <string name="pass_conf_check">Паролі не співпадають</string>
+
+    <string name="hello">Привіт</string>
+    <string name="you">Ти: </string>
+
+    <string name="settings">Налаштування</string>
+    <string name="about_us">Про нас</string>
+    <string name="logout">Вихід</string>
+
+    <string name="message">Повідомлення</string>
+
+    <string name="friends_list_empty">Твій список друзів пустий\nНатисни знизу кнопку для пошуку друзів</string>
+
+    <string name="copy">Повідомлення скопійовано</string>
+</resources>

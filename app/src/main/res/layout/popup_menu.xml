@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:paddingVertical="5dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
+        android:layout_marginBottom="2dp"
+        android:alpha="0.5">
+
+        <ImageView
+            android:id="@+id/iv_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_settings"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_gravity="center"
+            android:paddingRight="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
+        android:layout_marginTop="2dp">
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_info"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_about_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_us"
+            android:textSize="17sp"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:paddingRight="15dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@color/grey"
+        android:paddingHorizontal="5dp"
+        android:layout_marginVertical="5dp"
+        android:alpha="0.5"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            android:src="@drawable/ic_logout"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logout"
+            android:textSize="17sp"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:paddingRight="15dp"/>
+
+    </LinearLayout>
+</LinearLayout>
